@@ -1,6 +1,6 @@
 @import '../bower_components/bourbon/app/assets/stylesheets/bourbon';
 @import '../bower_components/neat/app/assets/stylesheets/neat';
-
+$grid-columns: 8 !default;
 // Typography
 $base-font-family: $helvetica;
 
@@ -10,6 +10,7 @@ $dark-gray: #333;
 $medium-gray: #999;
 $light-gray: #ddd;
 $very-light-gray: #fafafa;
+$cursive: 'Kaushan Script', cursive;
 
 $base-font-color: $dark-gray;
 $base-background-color: $very-light-gray;
@@ -17,12 +18,63 @@ $base-background-color: $very-light-gray;
 body {
   font-family: $base-font-family;
   background-color: $base-background-color;
-  color: red;
+
 }
-h1 {
-  margin-top: 0;
+.background {
+  //background-image: repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0.3) 1px, transparent 2px,rgba(0, 0, 0, 0.3) 4px, transparent 4px);
+  position: relative;
+  min-height: 2800px;
+}
+.container {
+  @include outer-container(1000px)
+}
+.right-container {
+  @include span-columns(6 of 8);
+  @include shift(2);
+  color: rgba(255, 255, 255,.8);
+  margin-top: 70px;
+  background-color: rgba(0,0,0,0.5);
+  box-shadow: inset #111 3px 3px 10px 3px, #201111 6px 7px 13px 1px;
+  border: 1px solid black;
+
+  border-radius: 10px;
+}
+.right-container h2 {
+  text-align: center;
+  font-family: $cursive;
+  font-size: 45px;
+  margin: 10px 0;
+}
+.big-top {
+  font-family: $cursive;
+  font-size: 70px;
+ // color: white;
+
+}
+.name {
+  font-size: 40px;
+  text-align: center;
+}
+.left {
+  @include span-columns(3 of 6);
+
+}
+.right {
+  @include span-columns(3 of 6);
+  @include omega;
+
+}
+.left p {
+  margin: 0 28px;
+  font-size: 1.2em;
+  line-height: 1.5em;
 }
 
+.skills li{
+  list-style: none;
+  height: 26px;
+  font-size: 1.2em;
+}
 .frame {
   width: 100%;
   //min-height: 800px;
@@ -30,55 +82,57 @@ h1 {
 }
 .top {
   height: 700px;
-  position: absolute;
-  top: 0;
-  background-image: url('../images/sailing1.jpg');
+  //position: absolute;
+  //top: 0;
+  background-image: repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0.3) 1px, transparent 2px,rgba(0, 0, 0, 0.3) 4px, transparent 4px),
+  url('../images/sailing1.jpg');
+
   -webkit-background-size: cover;
   background-size: cover;
-  z-index: -2;
+  //z-index: -1;
 }
 
 .about   {
   height: 700px;
-  position: absolute;
-  top:700px;
-  background-image: url('../images/lrg-ship-n-bottle.jpg');
+  //position: absolute;
+  //top:700px;
+  background-image: repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0.3) 1px, transparent 2px,rgba(0, 0, 0, 0.3) 4px, transparent 4px),
+  url('../images/lrg-ship-n-bottle.jpg');
+
   -webkit-background-size: cover;
   background-size: cover;
-  z-index: -2;
+  //z-index: -2;
 
   //background-color: #000066;
 }
 .portfolio1 {
-  position: absolute;
+  //position: absolute;
   height: 700px;
-  top:1400px;
-  background-image: url('../images/CuttySark.jpg');
+  //top:1400px;
+  background-image: repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0.3) 1px, transparent 2px,rgba(0, 0, 0, 0.3) 4px, transparent 4px),
+  url('../images/CuttySark.jpg');
   -webkit-background-size: cover;
   background-size: cover;
-  z-index: -2;
+  //z-index: -2;
 }
 .portfolio2 {
-  position: absolute;
+  //position: absolute;
   height: 700px;
-  top:2100px;
-  background-image: url('../images/oracle.jpg');
+  //top:2100px;
+  background-image: repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0.3) 1px, transparent 2px,rgba(0, 0, 0, 0.3) 4px, transparent 4px),
+  url('../images/oracle.jpg');
   -webkit-background-size: cover;
   background-size: cover;
-  z-index: -2;
+ // z-index: -2;
 }
-.background {
-  background-image: repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0.3) 1px, transparent 2px,rgba(0, 0, 0, 0.3) 4px, transparent 4px);
-  position: relative;
-  min-height: 2800px;
-}
+
 @keyframes slide-border-left {
   from {
     background-color: transparent;
     left: 30px;}
   to {
   background-color: green;
-    left: 0px;}
+    left: 0;}
 }
 @keyframes slide-border-right {
   from {
@@ -88,32 +142,47 @@ h1 {
     background-color: transparent;
     left: 30px;}
 }
-#top-menu {
 
-  width: 220px;
-  position: fixed;
-  z-index: 1;
-  background: rgba(0,0,0, 0.5);
-  padding-left: 0;
-  left: 20px;
-  top: 20px;
+#top-menu {
+  @include span-columns(2);
+  font-family: $cursive;
+  font-size: 1.3em;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+  box-shadow: inset #111 3px 3px 10px 3px, #201111 6px 7px 13px 1px;
+  width: 220px;
+  position: fixed;
+  //z-index: 1;
+  background: rgba(0,0,0, 0.5);
+  padding-left: 0;
+  //left: 40px;
+  top: 70px;
+
+}
+#top-menu h2 {
+  font-size: 2em;
+  margin: 30px 10px;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+
+}
+#top-menu ul{
+  padding-left: 0;
+  margin-bottom: 1px;
 }
 
 #top-menu li {
   border-bottom: 1px solid rgba(0,0,0,.5);
-  height: 38px;
+  height: 45px;
   list-style: none;
-  padding: 10px 2px;
   position: relative;
 
   //float: left;
 }
 #top-menu .menu-border {
   width: 3px;
-  height: 37px;
+  height: 44px;
   background-color: rgba(0,0,0, 0.0);
   position: absolute;
   top: 0;
@@ -122,10 +191,10 @@ h1 {
   -moz-animation-name: slide-border-right;
   -o-animation-name: slide-border-right;
   animation-name: slide-border-right;
-  -webkit-animation-duration: 1s;
-  -moz-animation-duration: 1s;
-  -o-animation-duration: 1s;
-  animation-duration: 1s;
+  -webkit-animation-duration: 0.5s;
+  -moz-animation-duration: 0.5s;
+  -o-animation-duration: 0.5s;
+  animation-duration: 0.5s;
   animation-iteration-count: 1;
   -webkit-animation-fill-mode: forwards;
   -moz-animation-fill-mode: forwards;
@@ -136,7 +205,7 @@ h1 {
 }
 #top-menu .menu-active{
   width: 3px;
-  height: 37px;
+  height: 44px;
   background-color: rgba(0,0,0,0.0);
   position: absolute;
   top: 0;
@@ -146,10 +215,10 @@ h1 {
 
 #top-menu a {
   //display: block;
-  padding: 5px 25px 7px 25px;
+  padding: 0 25px;
   height: 25px;
   position: absolute;
-  top: 4px;
+  top: 6px;
   left: 10px;
   -webkit-transition: .5s all ease-out;
   -moz-transition: .5s all ease-out;
@@ -164,10 +233,10 @@ h1 {
   -moz-animation-name: slide-border-left;
   -o-animation-name: slide-border-left;
   animation-name: slide-border-left;
-  -webkit-animation-duration: 1s;
-  -moz-animation-duration: 1s;
-  -o-animation-duration: 1s;
-  animation-duration: 1s;
+  -webkit-animation-duration: 0.3s;
+  -moz-animation-duration: 0.3s;
+  -o-animation-duration: 0.3s;
+  animation-duration: 0.3s;
   animation-iteration-count: 1;
   -webkit-animation-fill-mode: forwards;
   -moz-animation-fill-mode: forwards;
