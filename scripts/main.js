@@ -2,10 +2,18 @@
   'use strict';
 
   $(document).ready(function(){
-    $('body').prepend(JST['application']());
+
+      var renderOthers = function(){
+          return topMenu.html(JST['main_menu']());
+      };
+       $('body').prepend(JST['application']());
+
+
     // Cache selectors
+    var topMenu = $("#top-menu");
+    topMenu.append(JST['main_menu']());
     var lastId,
-        topMenu = $("#top-menu"),
+
         topMenuHeight = topMenu.outerHeight()+15,
     // All list items from menu
         menuItems = topMenu.find("a"),

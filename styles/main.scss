@@ -64,8 +64,15 @@ body {
   @include omega;
 
 }
+.about-headings {
+  @include span-columns(6 of 6);
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px 10px 0 0;
+  border-bottom: 1px solid black;
+}
+
 .left p {
-  margin: 0 28px;
+  margin: 28px 40px;
   font-size: 1.2em;
   line-height: 1.5em;
 }
@@ -74,6 +81,48 @@ body {
   list-style: none;
   height: 26px;
   font-size: 1.2em;
+}
+.port {
+  @include span-columns(1.8 of 6);
+  height: 200px;
+  border: 2px solid white;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+
+}
+.port-l {
+  @include shift(0.3)
+}
+.port-m {
+  //@include shift(1);
+
+}
+.port-r {
+  @include omega();
+}
+.to-site {
+  //@include span-columns(.8 of 1.8);
+
+  height: 40px;
+  width: 46%;
+  padding: 5px 0;
+  display: inline-block;
+  text-align: center;
+
+  border: 1px solid black;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background-color: orangered;
+
+}
+.to-site-l {
+  margin-left: 3%;
+}
+.to-site a {
+  text-decoration: none;
+  color: black;
 }
 .frame {
   width: 100%;
@@ -150,7 +199,7 @@ body {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  box-shadow: inset #111 3px 3px 10px 3px, #201111 6px 7px 13px 1px;
+  box-shadow: inset #111 -2px 0px 10px 3px, #201111 6px 10px 20px 1px;
   width: 220px;
   position: fixed;
   //z-index: 1;
