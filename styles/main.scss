@@ -11,6 +11,10 @@ $medium-gray: #999;
 $light-gray: #ddd;
 $very-light-gray: #fafafa;
 $cursive: 'Kaushan Script', cursive;
+$trans-white: rgba(255, 255, 255,.8);
+$trans-black: rgba(0,0,0,0.5);
+$trans-dark-black: rgba(0,0,0,0.8);
+$angled-back: repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0.3) 1px, transparent 2px,rgba(0, 0, 0, 0.3) 4px, transparent 4px);
 
 $base-font-color: $dark-gray;
 $base-background-color: $very-light-gray;
@@ -31,9 +35,9 @@ body {
 .right-container {
   @include span-columns(6 of 8);
   @include shift(2);
-  color: rgba(255, 255, 255,.8);
+  color: $trans-white;
   margin-top: 70px;
-  background-color: rgba(0,0,0,0.5);
+  background-color: $trans-black;
   box-shadow: inset #111 3px 3px 10px 3px, #201111 6px 7px 13px 1px;
   border: 1px solid black;
 
@@ -48,7 +52,7 @@ body {
 .big-top {
   font-family: $cursive;
   font-size: 70px;
- // color: white;
+
 
 }
 .name {
@@ -64,7 +68,7 @@ body {
   @include omega;
 
 }
-.about-headings {
+.dark-headings {
   @include span-columns(6 of 6);
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 10px 10px 0 0;
@@ -84,11 +88,15 @@ body {
 }
 .port {
   @include span-columns(1.8 of 6);
-  height: 200px;
+
+  @include margin(30px null 30px null);
+  height: 300px;
   border: 2px solid white;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+  position: relative;
+  background-color: rgba(0,0,0,0.3);
 
 }
 .port-l {
@@ -100,6 +108,155 @@ body {
 }
 .port-r {
   @include omega();
+}
+@keyframes fadeOutPort {
+  0% {
+    background-color: $trans-dark-black;
+    color: $trans-white;
+  }
+  90% {
+    color: transparent;
+    background-color: transparent;
+  }
+  100% {
+    //border:10px solid rgba(255,255,255,0);
+
+    z-index: -5;
+  }
+}
+@keyframes fadeinPort {
+  0% {
+    background-color: transparent;
+    color: transparent;
+
+  }
+  5% {
+    z-index: 10;
+  }
+  100% {
+    background-color: $trans-dark-black;
+    color: $trans-white;
+  }
+}
+.port-overlay {
+  @include span-columns(12);
+  @include position(absolute,0 null null 0);
+  height: 296px;
+  background-color: $trans-dark-black;
+  z-index: 10;
+  border: 2px solid transparent;
+  -webkit-animation-name: fadeinPort;
+  -moz-animation-name: fadeinPort;
+  -o-animation-name: fadeinPort;
+  animation-name: fadeinPort;
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  -o-animation-duration: 1s;
+  animation-duration: 1s;
+
+
+}
+.port-overlay li {
+  list-style: none;
+  height: 35px;
+}
+
+.port:hover .port-overlay {
+  background-color: transparent;
+  color: transparent;
+  -webkit-animation-name: fadeOutPort;
+  -moz-animation-name: fadeOutPort;
+  -o-animation-name: fadeOutPort;
+  animation-name: fadeOutPort;
+  -webkit-animation-duration: 1.5s;
+  -moz-animation-duration: 1.5s;
+  -o-animation-duration: 1.5s;
+  animation-duration: 1.5s;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  //z-index: -5;
+  //-webkit-transition: background-color 1s ease, color 1s ease,z-index 1s linear;
+  //-moz-transition: background-color 1s ease, color 1s ease;
+  //-ms-transition: background-color 1s ease, color 1s ease;
+  //-o-transition: background-color 1s ease, color 1s ease;
+  //transition: background-color 1s ease, color 1s ease;
+}
+.port-skills {
+
+}
+.img-port {
+  height: 95px;
+  border-bottom: 1px solid white;
+  background-color: gray;
+}
+.port-title {
+  padding-top: 3px;
+  background-color: rgba(0,0,0,0.4);
+  height: 31px;
+  position: relative;
+}
+.git-hub-out {
+  width: 30px;
+  height: 30px;
+  background-color: rgba(0, 168, 255, 0.75);
+  border: 2px solid black;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  position: absolute;
+  right: 10px;
+  top: -12px;
+}
+.git-hub-in {
+  width: 22px;
+  height: 22px;
+  background-color: $medium-gray;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+}
+.git-hub-in:hover {
+  background-color: white;
+}
+
+.port h3{
+  margin: 0 0 0 10px;
+
+}
+
+img {
+  width: 100%;
+}
+
+.port-description {
+  overflow-y: hidden;
+  overflow-x: hidden;
+  height: 140px;
+  padding: 0 15px;
+  cursor: context-menu;
+}
+.port-description:hover {
+  overflow-y: scroll;
+}
+.port-description::-webkit-scrollbar {
+  width: 8px;
+}
+.port-description::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0);
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+}
+.port-description::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  background: rgba(0, 250, 0, 0.4);
+  -webkit-box-shadow: inset 0 0 6px $trans-black;
+}
+.port-description::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(0,250,0,0.4);
 }
 .to-site {
   //@include span-columns(.8 of 1.8);
@@ -126,27 +283,23 @@ body {
 }
 .frame {
   width: 100%;
-  //min-height: 800px;
-  //background-image: repeating-linear-gradient(-45deg, transparent, transparent 25px, rgba(255,255,255,1) 25px, rgba(255,255,255,1) 50px);
-}
-.top {
-  height: 700px;
-  //position: absolute;
-  //top: 0;
-  background-image: repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0.3) 1px, transparent 2px,rgba(0, 0, 0, 0.3) 4px, transparent 4px),
-  url('../images/sailing1.jpg');
-
+  min-height: 700px;
   -webkit-background-size: cover;
   background-size: cover;
-  //z-index: -1;
+}
+.top {
+
+  background-image: $angled-back,url('../images/sailing1.jpg');
+
+
+
 }
 
 .about   {
   height: 700px;
   //position: absolute;
   //top:700px;
-  background-image: repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0.3) 1px, transparent 2px,rgba(0, 0, 0, 0.3) 4px, transparent 4px),
-  url('../images/lrg-ship-n-bottle.jpg');
+  background-image: $angled-back,url('../images/lrg-ship-n-bottle.jpg');
 
   -webkit-background-size: cover;
   background-size: cover;
@@ -158,8 +311,7 @@ body {
   //position: absolute;
   height: 700px;
   //top:1400px;
-  background-image: repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0.3) 1px, transparent 2px,rgba(0, 0, 0, 0.3) 4px, transparent 4px),
-  url('../images/CuttySark.jpg');
+  background-image: $angled-back,url('../images/CuttySark.jpg');
   -webkit-background-size: cover;
   background-size: cover;
   //z-index: -2;
@@ -168,8 +320,7 @@ body {
   //position: absolute;
   height: 700px;
   //top:2100px;
-  background-image: repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0.3) 1px, transparent 2px,rgba(0, 0, 0, 0.3) 4px, transparent 4px),
-  url('../images/oracle.jpg');
+  background-image: $angled-back,url('../images/oracle.jpg');
   -webkit-background-size: cover;
   background-size: cover;
  // z-index: -2;

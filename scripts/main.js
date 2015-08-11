@@ -7,8 +7,8 @@
           return topMenu.html(JST['main_menu']());
       };
        $('body').prepend(JST['application']());
-
-
+      var dude = $(".port-skills").height();
+        console.log(dude);
     // Cache selectors
     var topMenu = $("#top-menu");
     topMenu.append(JST['main_menu']());
@@ -62,6 +62,10 @@
             .parent().removeClass("active")
             .end().filter("[href=#"+id+"]").parent().addClass("active");
       }
+
     });
-  });
+      //$('.port-overlay').on(mouseenter,function(e){
+      //
+      //})
+  }); //end of doc ready
 })();
