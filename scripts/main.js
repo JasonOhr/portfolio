@@ -3,18 +3,17 @@
 
   $(document).ready(function(){
 
-      var renderOthers = function(){
-          return topMenu.html(JST['main_menu']());
-      };
-       $('body').prepend(JST['application']());
-      var dude = $(".port-skills").height();
-        console.log(dude);
+
+
+    $('body').prepend(JST['application']());
+    var dude = $(".port-skills").height();
+    console.log(dude);
     // Cache selectors
     var topMenu = $("#top-menu");
     topMenu.append(JST['main_menu']());
     var lastId,
 
-        topMenuHeight = topMenu.outerHeight()+15,
+    //topMenuHeight = topMenu.outerHeight()+15,
     // All list items from menu
         menuItems = topMenu.find("a"),
     // Anchors corresponding to menu items
@@ -64,8 +63,11 @@
       }
 
     });
-      //$('.port-overlay').on(mouseenter,function(e){
-      //
-      //})
+      $('.port-overlay ul').each(function(){
+
+          var ulMargin = Math.floor(300 - $(this).height())/2;
+          console.log(ulMargin);
+          $(this).css('marginTop', ulMargin);
+      });
   }); //end of doc ready
 })();
