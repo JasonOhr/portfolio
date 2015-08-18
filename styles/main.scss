@@ -52,12 +52,30 @@ body {
 .big-top {
   font-family: $cursive;
   font-size: 70px;
+  text-align: center;;
 
 
+}
+.my-pic {
+  width: 80px;
+  height: 80px;
+  //border :5px solid white;
+  position: absolute;
+  right: 169px;
+  top: -16px;
+
+}
+.my-pic img {
+  opacity: 0.8;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
 }
 .name {
   font-size: 40px;
   text-align: center;
+  position: relative;
+  margin-bottom: 15px;
 }
 .left {
   @include span-columns(3 of 6);
@@ -80,7 +98,9 @@ body {
   font-size: 1.2em;
   line-height: 1.5em;
 }
-
+.skills {
+  margin-top: 28px;
+}
 .skills li{
   list-style: none;
   height: 26px;
@@ -168,10 +188,10 @@ body {
   -moz-animation-name: fadeOutPort;
   -o-animation-name: fadeOutPort;
   animation-name: fadeOutPort;
-  -webkit-animation-duration: 1.5s;
-  -moz-animation-duration: 1.5s;
-  -o-animation-duration: 1.5s;
-  animation-duration: 1.5s;
+  -webkit-animation-duration: .5s;
+  -moz-animation-duration: .5s;
+  -o-animation-duration: .5s;
+  animation-duration: .5s;
   -webkit-animation-fill-mode: forwards;
   -moz-animation-fill-mode: forwards;
   -o-animation-fill-mode: forwards;
@@ -201,6 +221,7 @@ body {
   position: absolute;
   right: 10px;
   top: -12px;
+
 }
 .git-hub-in {
   width: 22px;
@@ -210,9 +231,45 @@ body {
   position: absolute;
   top: 2px;
   right: 2px;
+  -webkit-transition: background-color .5s;
+  -moz-transition: background-color .5s;
+  -ms-transition: background-color .5s;
+  -o-transition: background-color .5s;
+  transition: background-color .5s;
 }
-.git-hub-in:hover {
+.menu-title {
+  position: relative;
+}
+span.git-main-in {
+  //top: 2px;
+  width: 32px;
+  height: 32px;
+}
+.git-main-in img {
+  position: absolute;
+  left: 0;
+}
+.git-main-out {
+  top: 7px;
+  right: 5px;
+  width: 40px;
+  height: 40px;
+}
+#top-menu .git-main-anchor {
+  //right: 0;
+  position: inherit;
+}
+.git-main-out:hover .git-hub-in{
   background-color: white;
+}
+a:active .git-hub-out {
+  background-color: green;
+}
+.port-title:hover .git-hub-in{
+  background-color: white;
+}
+.port-title:active .git-hub-out {
+  background-color: green;
 }
 
 .port h3{
@@ -301,13 +358,10 @@ img {
   //background-color: #000066;
 }
 .portfolio1 {
-  //position: absolute;
-  height: 700px;
-  //top:1400px;
+
   background-image: $angled-back,url('../images/CuttySark.jpg');
   -webkit-background-size: cover;
   background-size: cover;
-  //z-index: -2;
 }
 .portfolio2 {
   //position: absolute;
@@ -317,6 +371,10 @@ img {
   -webkit-background-size: cover;
   background-size: cover;
  // z-index: -2;
+}
+.fade-out {
+  height: 25px;
+  background: linear-gradient(to top ,black, transparent);
 }
 
 @keyframes slide-border-left {
@@ -355,9 +413,9 @@ img {
 }
 #top-menu h2 {
   font-size: 2em;
-  margin: 30px 10px;
+  margin: 30px 22px;
   color: rgba(255, 255, 255, 0.8);
-  text-align: center;
+  //text-align: center;
 
 }
 #top-menu ul{

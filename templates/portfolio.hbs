@@ -1,0 +1,32 @@
+{{#each project}}
+    <div class="port port-{{#position}}{{/position}}">
+        <div class="img-port">
+            <a href="{{href}}" target="_blank">
+                <img src="dist/images/{{img}}-shot.png" alt="<{{alt}}> link"/>
+            </a>
+        </div>
+        <div class="port-title">
+            <a href="https://github.com/JasonOhr/{{github}}">
+                <div class="git-hub-out">
+                                <span class="git-hub-in">
+                                    <img  src="dist/images/github.ico"/>
+                                </span>
+                </div>
+            </a>
+            <h3>{{name}}</h3>
+        </div>
+        <div class="port-description">
+            <p>{{description}}
+            </p>
+        </div>
+
+        <div class="port-overlay">
+
+                {{#skills skills}}{{/skills}}
+
+        </div>
+
+
+    </div>
+{{/each}}
+
